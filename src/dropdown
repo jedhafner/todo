@@ -1,0 +1,36 @@
+
+const body = document.getElementsByTagName('body')[0];
+
+function dropdown(options){
+    let dropdown = document.createElement('div');
+    dropdown.setAttribute('class','dropdown');
+    let dropbtn = document.createElement('button');
+    dropbtn.setAttribute('onclick',"myFunction()");
+    dropbtn.setAttribute('class','dropbtn');
+    dropdown.appendChild(dropbtn);
+    let dropdownContent = document.createElement('div');
+    dropdownContent.setAttribute('class','dropdownContent');
+    options.forEach((element) => {
+        let option = document.createElement('p').textContent = element;
+        dropdownContent.appendChild(option);
+    });
+    dropdown.appendChild(dropdownContent);
+    function myFunction() {
+        document.dropdownContent.classList.toggle("show");
+      };
+      window.onclick = function(event) {
+        if (!event.target.matches('.dropbtn')) {
+          let dropdowns = document.getElementsByClassName("dropdownContent");
+          for (let i = 0; i < dropdowns.length; i++) {
+            let openDropdown = dropdowns[i];
+            if (openDropdown.classList.contains('show')) {
+              openDropdown.classList.remove('show');
+            }
+          }
+        }
+    }
+}
+
+let priorities = ['high','medium','low'];
+
+dropdown(priorities);
